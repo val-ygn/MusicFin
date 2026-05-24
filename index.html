@@ -13,7 +13,7 @@
   <body>
     <header class="site-header" aria-label="MusicFin">
       <a class="brand" href="#top" aria-label="MusicFin home">
-        <img src="../app/src/main/ic_launcher-playstore.png" alt="" />
+        <img src="./icon.png" alt="" />
         <span>MusicFin</span>
       </a>
       <nav class="nav-links" aria-label="Navigation">
@@ -80,7 +80,7 @@
 
           <div class="watch-frame">
             <div class="watch-screen">
-              <img src="../app/src/main/ic_launcher-playstore.png" alt="" />
+              <img src="./icon.png" alt="" />
               <strong>MusicFin</strong>
               <span data-i18n="mock.watch">Controle montre</span>
               <div class="watch-controls">
@@ -98,88 +98,3 @@
           <strong data-i18n="summary.one.title">Jellyfin d'abord</strong>
           <span data-i18n="summary.one.text">Connexion par serveur, utilisateur et mot de passe.</span>
         </div>
-        <div>
-          <strong data-i18n="summary.two.title">Mobile + montre</strong>
-          <span data-i18n="summary.two.text">Le telephone transmet la session a Wear OS.</span>
-        </div>
-        <div>
-          <strong data-i18n="summary.three.title">Lecture rapide</strong>
-          <span data-i18n="summary.three.text">Reprendre, recents, non lus, recherche et file d'attente.</span>
-        </div>
-      </section>
-
-      <section class="section" id="features" aria-labelledby="features-title">
-        <div class="section-heading">
-          <p class="eyebrow" data-i18n="features.eyebrow">Ce que fait MusicFin</p>
-          <h2 id="features-title" data-i18n="features.title">Une interface courte pour aller vite dans votre bibliotheque audio.</h2>
-        </div>
-        <div class="feature-grid">
-          <article>
-            <span class="feature-icon">01</span>
-            <h3 data-i18n="features.library.title">Bibliotheques Jellyfin</h3>
-            <p data-i18n="features.library.text">MusicFin affiche les bibliotheques musique et livres audio, puis charge les pistes avec pochettes, artistes et albums.</p>
-          </article>
-          <article>
-            <span class="feature-icon">02</span>
-            <h3 data-i18n="features.playback.title">Lecture integree</h3>
-            <p data-i18n="features.playback.text">Controlez play, pause, piste suivante et precedente depuis le telephone ou la montre.</p>
-          </article>
-          <article>
-            <span class="feature-icon">03</span>
-            <h3 data-i18n="features.watch.title">Connexion montre</h3>
-            <p data-i18n="features.watch.text">Le mobile envoie les identifiants a Wear OS pour eviter de retaper l'adresse Jellyfin sur un petit ecran.</p>
-          </article>
-          <article>
-            <span class="feature-icon">04</span>
-            <h3 data-i18n="features.offline.title">Mode montre soigne</h3>
-            <p data-i18n="features.offline.text">Sur Wear OS, MusicFin propose details de piste, file d'attente, recherche vocale, volume et telechargement hors-ligne.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="workflow" id="workflow" aria-labelledby="workflow-title">
-        <div class="section-heading">
-          <p class="eyebrow" data-i18n="workflow.eyebrow">Parcours simple</p>
-          <h2 id="workflow-title" data-i18n="workflow.title">Trois etapes pour passer de Jellyfin a la montre.</h2>
-        </div>
-        <ol class="steps">
-          <li>
-            <span>1</span>
-            <h3 data-i18n="workflow.step1.title">Connectez Jellyfin</h3>
-            <p data-i18n="workflow.step1.text">Entrez l'adresse du serveur, votre utilisateur et votre mot de passe dans l'app Android.</p>
-          </li>
-          <li>
-            <span>2</span>
-            <h3 data-i18n="workflow.step2.title">Envoyez a la montre</h3>
-            <p data-i18n="workflow.step2.text">Le bouton Montre partage la connexion avec l'app Wear OS appairee.</p>
-          </li>
-          <li>
-            <span>3</span>
-            <h3 data-i18n="workflow.step3.title">Lancez la lecture</h3>
-            <p data-i18n="workflow.step3.text">Choisissez une bibliotheque, reprenez une piste ou controlez le player depuis le poignet.</p>
-          </li>
-        </ol>
-      </section>
-
-      <section class="download" id="download" aria-labelledby="download-title">
-        <div>
-          <p class="eyebrow" data-i18n="download.eyebrow">Builds locaux</p>
-          <h2 id="download-title" data-i18n="download.title">Tester MusicFin sur telephone et montre.</h2>
-          <p data-i18n="download.text">
-            Les APK debug existent deja dans le projet. Installez le client telephone, puis l'app Wear OS avec la meme signature de build.
-          </p>
-        </div>
-        <div class="download-actions">
-          <a class="button primary" href="../phone/build/outputs/apk/debug/phone-debug.apk" data-i18n="download.phone">APK Android</a>
-          <a class="button secondary" href="../app/build/outputs/apk/debug/app-debug.apk" data-i18n="download.watch">APK Wear OS</a>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <span data-i18n="footer.text">MusicFin est un projet compagnon Jellyfin pour garder votre audio a portee de main.</span>
-    </footer>
-
-    <script src="./script.js"></script>
-  </body>
-</html>
