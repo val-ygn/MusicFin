@@ -6,7 +6,7 @@
 
 <title>MusicFin | Jellyfin Music Player</title>
 
-<link rel="icon" type="image/png" href="/logo.svg">
+<link class="js-favicon" rel="icon" type="image/png" href="/logo.svg">
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -45,7 +45,6 @@ tailwind.config = {
 
 <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-white transition-colors duration-300">
 
-<!-- NAVBAR -->
 <nav class="sticky top-0 z-50 backdrop-blur bg-white/80 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
@@ -57,14 +56,23 @@ tailwind.config = {
     <div class="flex items-center gap-4">
 
       <a href="#features"
+         data-i18n="nav-features"
          class="hidden md:block text-sm font-medium hover:text-primary">
         Fonctionnalités
       </a>
 
       <a href="#screenshots"
+         data-i18n="nav-screenshots"
          class="hidden md:block text-sm font-medium hover:text-primary">
         Captures
       </a>
+
+      <button
+        id="langToggle"
+        class="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-900 transition">
+        <span>🌐</span>
+        <span id="langLabel">EN</span>
+      </button>
 
       <button
         id="themeToggle"
@@ -76,71 +84,56 @@ tailwind.config = {
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="gradient-bg overflow-hidden">
 
   <div class="max-w-7xl mx-auto px-6 py-24">
 
     <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-      <!-- LEFT -->
       <div>
 
         <span class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary font-medium mb-6">
           Android • Wear OS • Jellyfin
         </span>
 
-        <h1 class="text-5xl md:text-6xl font-black leading-tight">
+        <h1 class="text-5xl md:text-6xl font-black leading-tight" id="hero-title">
           Votre musique Jellyfin,
           <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             partout.
           </span>
         </h1>
 
-        <p class="mt-6 text-lg text-slate-600 dark:text-slate-300 max-w-xl">
+        <p class="mt-6 text-lg text-slate-600 dark:text-slate-300 max-w-xl" data-i18n="hero-desc">
           Connectez-vous à votre serveur Jellyfin et profitez de votre bibliothèque musicale
           sur Android et Wear OS avec une expérience moderne, rapide et pensée pour la mobilité.
         </p>
 
         <div class="flex flex-wrap gap-4 mt-10">
 
-          <a href="#"
-             class="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-black text-white hover:scale-105 transition">
+          <a href="https://github.com/val-ygn/MusicFinForWearOS"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-slate-900 text-white hover:bg-slate-800 transition">
             <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M3 20.5V3.5L20 12L3 20.5Z"/>
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.81 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.54-1.37-1.32-1.74-1.32-1.74-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.06 1.82 2.78 1.3 3.46.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013.01-.41c1.02.01 2.05.14 3.01.41 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.69.83.57C20.57 21.81 24 17.31 24 12 24 5.37 18.63 0 12 0z"/>
             </svg>
 
-            <a
-  href="https://github.com/val-ygn/MusicFinForWearOS"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-slate-900 text-white hover:bg-slate-800 transition"
->
-  <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.81 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.54-1.37-1.32-1.74-1.32-1.74-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.06 1.82 2.78 1.3 3.46.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013.01-.41c1.02.01 2.05.14 3.01.41 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.28 0 .32.22.69.83.57C20.57 21.81 24 17.31 24 12 24 5.37 18.63 0 12 0z"/>
-  </svg>
-
-  <div>
-    <div class="text-xs opacity-70">Voir le projet sur</div>
-    <div class="font-semibold">GitHub</div>
-  </div>
-</a>
-
+            <div>
+              <div class="text-xs opacity-70" data-i18n="github-sub">Voir le projet sur</div>
+              <div class="font-semibold">GitHub</div>
+            </div>
           </a>
 
         </div>
 
       </div>
 
-      <!-- RIGHT MOCKUPS -->
       <div class="relative flex justify-center items-center min-h-[500px]">
 
-        <!-- PHONE -->
         <div class="w-64 h-[520px] bg-slate-900 rounded-[40px] p-3 phone-shadow relative z-10">
 
           <div class="w-full h-full rounded-[32px] bg-white overflow-hidden">
 
-            <!-- PLACEHOLDER SCREENSHOT MOBILE -->
             <img
               src="/Screenshots/Tel Menu.png"
               alt="Screenshot Mobile"
@@ -150,14 +143,12 @@ tailwind.config = {
 
         </div>
 
-        <!-- WATCH -->
         <div class="absolute right-0 bottom-10">
 
           <div class="w-44 h-44 rounded-full bg-slate-900 p-3 watch-shadow">
 
             <div class="w-full h-full rounded-full bg-white overflow-hidden">
 
-              <!-- PLACEHOLDER SCREENSHOT WATCH -->
               <img
                 src="/Screenshots/Montre Menu.png"
                 alt="Screenshot Wear OS"
@@ -177,18 +168,17 @@ tailwind.config = {
 
 </section>
 
-<!-- FEATURES -->
 <section id="features" class="py-24">
 
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-16">
 
-      <h2 class="text-4xl font-bold">
+      <h2 class="text-4xl font-bold" data-i18n="features-title">
         Fonctionnalités
       </h2>
 
-      <p class="mt-4 text-slate-500">
+      <p class="mt-4 text-slate-500" data-i18n="features-subtitle">
         Tout ce dont vous avez besoin pour écouter votre musique.
       </p>
 
@@ -198,32 +188,32 @@ tailwind.config = {
 
       <div class="p-8 rounded-3xl bg-slate-100 dark:bg-slate-900">
         <div class="text-4xl mb-4">🎵</div>
-        <h3 class="font-bold text-xl mb-2">Connexion Jellyfin</h3>
-        <p class="text-slate-500">
+        <h3 class="font-bold text-xl mb-2" data-i18n="feat1-title">Connexion Jellyfin</h3>
+        <p class="text-slate-500" data-i18n="feat1-desc">
           Connectez-vous à votre serveur Jellyfin en quelques secondes.
         </p>
       </div>
 
       <div class="p-8 rounded-3xl bg-slate-100 dark:bg-slate-900">
         <div class="text-4xl mb-4">⌚</div>
-        <h3 class="font-bold text-xl mb-2">Wear OS autonome</h3>
-        <p class="text-slate-500">
+        <h3 class="font-bold text-xl mb-2" data-i18n="feat2-title">Wear OS autonome</h3>
+        <p class="text-slate-500" data-i18n="feat2-desc">
           Écoutez votre musique directement depuis votre montre.
         </p>
       </div>
 
       <div class="p-8 rounded-3xl bg-slate-100 dark:bg-slate-900">
         <div class="text-4xl mb-4">🎨</div>
-        <h3 class="font-bold text-xl mb-2">Material You</h3>
-        <p class="text-slate-500">
+        <h3 class="font-bold text-xl mb-2" data-i18n="feat3-title">Material You</h3>
+        <p class="text-slate-500" data-i18n="feat3-desc">
           Interface moderne inspirée de Material Design 3.
         </p>
       </div>
 
       <div class="p-8 rounded-3xl bg-slate-100 dark:bg-slate-900">
         <div class="text-4xl mb-4">🎧</div>
-        <h3 class="font-bold text-xl mb-2">Haute qualité</h3>
-        <p class="text-slate-500">
+        <h3 class="font-bold text-xl mb-2" data-i18n="feat4-title">Haute qualité</h3>
+        <p class="text-slate-500" data-i18n="feat4-desc">
           Streaming audio fidèle à votre bibliothèque.
         </p>
       </div>
@@ -234,56 +224,51 @@ tailwind.config = {
 
 </section>
 
-<!-- SCREENSHOTS -->
 <section id="screenshots" class="py-24 bg-slate-50 dark:bg-slate-900/30">
 
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold">
+      <h2 class="text-4xl font-bold" data-i18n="screenshots-title">
         Captures d'écran
       </h2>
     </div>
 
-    <!-- MOBILE -->
     <div class="mb-24">
 
-      <h3 class="text-2xl font-bold mb-10">
+      <h3 class="text-2xl font-bold mb-10" data-i18n="screenshots-android">
         Application Android
       </h3>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-        <!-- Replace screenshots here -->
-
         <div class="bg-slate-900 p-3 rounded-[32px]">
           <img src="screenshots/Tel Menu.png"
-               class="rounded-[24px]">
+               class="rounded-[24px]" alt="Menu Android">
         </div>
 
         <div class="bg-slate-900 p-3 rounded-[32px]">
           <img src="screenshots/Tel Lecture en cours.png"
-               class="rounded-[24px]">
+               class="rounded-[24px]" alt="Android Lecture">
         </div>
 
         <div class="bg-slate-900 p-3 rounded-[32px]">
           <img src="screenshots/Tel Artiste.png"
-               class="rounded-[24px]">
+               class="rounded-[24px]" alt="Android Artiste">
         </div>
 
         <div class="bg-slate-900 p-3 rounded-[32px]">
           <img src="screenshots/Tel Paramètres.png"
-               class="rounded-[24px]">
+               class="rounded-[24px]" alt="Android Paramètres">
         </div>
 
       </div>
 
     </div>
 
-    <!-- WEAR -->
     <div>
 
-      <h3 class="text-2xl font-bold mb-10">
+      <h3 class="text-2xl font-bold mb-10" data-i18n="screenshots-wear">
         Application Wear OS
       </h3>
 
@@ -291,22 +276,22 @@ tailwind.config = {
 
         <div class="w-48 h-48 bg-slate-900 p-3 rounded-full">
           <img src="/Screenshots/Montre Menu.png"
-               class="rounded-full">
+               class="rounded-full" alt="Wear OS Menu">
         </div>
 
         <div class="w-48 h-48 bg-slate-900 p-3 rounded-full">
           <img src="/Screenshots/Montre Lecture en cours.png"
-               class="rounded-full">
+               class="rounded-full" alt="Wear OS Lecture">
         </div>
 
         <div class="w-48 h-48 bg-slate-900 p-3 rounded-full">
           <img src="/Screenshots/Montre Artiste.png"
-               class="rounded-full">
+               class="rounded-full" alt="Wear OS Artiste">
         </div>
 
         <div class="w-48 h-48 bg-slate-900 p-3 rounded-full">
           <img src="/Screenshots/Montre Paramètres.png"
-               class="rounded-full">
+               class="rounded-full" alt="Wear OS Paramètres">
         </div>
 
       </div>
@@ -317,23 +302,23 @@ tailwind.config = {
 
 </section>
 
-<!-- CTA -->
 <section class="py-24">
 
   <div class="max-w-4xl mx-auto px-6">
 
     <div class="rounded-[40px] p-12 text-center bg-gradient-to-r from-primary to-secondary text-white">
 
-      <h2 class="text-4xl font-bold mb-4">
+      <h2 class="text-4xl font-bold mb-4" data-i18n="cta-title">
         Prêt à écouter votre bibliothèque ?
       </h2>
 
-      <p class="opacity-90 mb-8">
+      <p class="opacity-90 mb-8" data-i18n="cta-desc">
         Installez MusicFin et emportez votre musique partout.
       </p>
 
       <a href="#"
-         class="inline-flex px-8 py-4 bg-white text-slate-900 rounded-2xl font-semibold">
+         data-i18n="cta-btn"
+         class="inline-flex px-8 py-4 bg-white text-slate-900 rounded-2xl font-semibold hover:scale-105 transition">
         Télécharger
       </a>
 
@@ -343,7 +328,6 @@ tailwind.config = {
 
 </section>
 
-<!-- FOOTER -->
 <footer class="border-t border-slate-200 dark:border-slate-800">
 
   <div class="max-w-7xl mx-auto px-6 py-10">
@@ -355,14 +339,14 @@ tailwind.config = {
           MusicFin
         </div>
 
-        <p class="text-slate-500 mt-2">
+        <p class="text-slate-500 mt-2" data-i18n="footer-desc">
           Client musical Jellyfin pour Android et Wear OS.
         </p>
       </div>
 
       <div class="flex gap-6 text-sm">
-      <a href="https://github.com/val-ygn">GitHub</a>
-      <a href="/privacy.html">Confidentialité</a>
+        <a href="https://github.com/val-ygn">GitHub</a>
+        <a href="/privacy.html" data-i18n="footer-privacy">Confidentialité</a>
       </div>
 
     </div>
@@ -387,8 +371,91 @@ toggle.addEventListener('click', () => {
       ? 'dark'
       : 'light';
 });
+
+const translations = {
+  fr: {
+    "nav-features": "Fonctionnalités",
+    "nav-screenshots": "Captures",
+    "hero-title": "Votre musique Jellyfin, <span class=\"bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent\">partout.</span>",
+    "hero-desc": "Connectez-vous à votre serveur Jellyfin et profitez de votre bibliothèque musicale sur Android et Wear OS avec une expérience moderne, rapide et pensée pour la mobilité.",
+    "github-sub": "Voir le projet sur",
+    "features-title": "Fonctionnalités",
+    "features-subtitle": "Tout ce dont vous avez besoin pour écouter votre musique.",
+    "feat1-title": "Connexion Jellyfin",
+    "feat1-desc": "Connectez-vous à votre serveur Jellyfin en quelques secondes.",
+    "feat2-title": "Wear OS autonome",
+    "feat2-desc": "Écoutez votre musique directement depuis votre montre.",
+    "feat3-title": "Material You",
+    "feat3-desc": "Interface moderne inspirée de Material Design 3.",
+    "feat4-title": "Haute qualité",
+    "feat4-desc": "Streaming audio fidèle à votre bibliothèque.",
+    "screenshots-title": "Captures d'écran",
+    "screenshots-android": "Application Android",
+    "screenshots-wear": "Application Wear OS",
+    "cta-title": "Prêt à écouter votre bibliothèque ?",
+    "cta-desc": "Installez MusicFin et emportez votre musique partout.",
+    "cta-btn": "Télécharger",
+    "footer-desc": "Client musical Jellyfin pour Android et Wear OS.",
+    "footer-privacy": "Confidentialité"
+  },
+  en: {
+    "nav-features": "Features",
+    "nav-screenshots": "Screenshots",
+    "hero-title": "Your Jellyfin music, <span class=\"bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent\">everywhere.</span>",
+    "hero-desc": "Connect to your Jellyfin server and enjoy your music library on Android and Wear OS with a modern, fast, and mobile-first experience.",
+    "github-sub": "View project on",
+    "features-title": "Features",
+    "features-subtitle": "Everything you need to listen to your music.",
+    "feat1-title": "Jellyfin Integration",
+    "feat1-desc": "Connect to your Jellyfin server in a matter of seconds.",
+    "feat2-title": "Standalone Wear OS",
+    "feat2-desc": "Listen to your music directly from your smartwatch.",
+    "feat3-title": "Material You",
+    "feat3-desc": "Modern user interface inspired by Material Design 3.",
+    "feat4-title": "High Quality",
+    "feat4-desc": "High-fidelity audio streaming matching your original library.",
+    "screenshots-title": "Screenshots",
+    "screenshots-android": "Android Application",
+    "screenshots-wear": "Wear OS Application",
+    "cta-title": "Ready to play your library?",
+    "cta-desc": "Install MusicFin and take your favorite tracks with you.",
+    "cta-btn": "Download",
+    "footer-desc": "Jellyfin music client for Android and Wear OS.",
+    "footer-privacy": "Privacy Policy"
+  }
+};
+
+const langToggleBtn = document.getElementById('langToggle');
+const langLabel = document.getElementById('langLabel');
+
+let currentLang = localStorage.getItem('preferredLang') || 'fr';
+
+function applyLanguage(lang) {
+  document.documentElement.setAttribute('lang', lang);
+
+  const heroTitle = document.getElementById('hero-title');
+  if (heroTitle) {
+    heroTitle.innerHTML = translations[lang]['hero-title'];
+  }
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+
+  langLabel.textContent = lang === 'fr' ? 'EN' : 'FR';
+}
+
+applyLanguage(currentLang);
+
+langToggleBtn.addEventListener('click', () => {
+  currentLang = currentLang === 'fr' ? 'en' : 'fr';
+  localStorage.setItem('preferredLang', currentLang);
+  applyLanguage(currentLang);
+});
 </script>
 
 </body>
 </html>
-```
